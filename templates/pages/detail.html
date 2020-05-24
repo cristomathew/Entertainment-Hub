@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{% load static %}
+<!DOCTYPE html>
+{%block title%}View{%endblock%}
+{%block content%} 
+        <div class="container">
+            <div class="col">
+              {% if posts %}
+              <!-- Listing 1 -->
+              <hr>
+              {%for post in posts%}
+                <p>{{post.title}}</p>
+            <hr>
+            <video width="700" height="400" controls>
+                <source src="{{post.video.url}}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+                            
+            {%endfor%}
+            {%else%}
+            <h2> Currently There are no Videos</h2>
+            
+            {%endif%}
+              <!-- Listing 3 -->
+      </div>
+      <script src="{% static 'js/main.js'%}"></script>
+
+{%endblock%}

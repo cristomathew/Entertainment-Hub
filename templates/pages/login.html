@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<section id="login">
+  <h1 style="align-items: center;">Welcome To Entertainment Hub</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-body">
+              <form action="{% url 'login' %}" method="POST">
+                  {% csrf_token %}
+                  <p style="color: red;">( username: guest)</p>
+                  <p style="color: red;">(password: pass@1234)</p>
+                <div class="form-group">
+                  <label for="username" style="color: black;">Username</label>
+                  <input type="text" name="username" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="password2" style="color: black;">Password</label>
+                  <input type="password" name="password" class="form-control" required>
+                </div>
+
+                <input type="submit" value="Login" class="btn btn-secondary btn-block">
+              </form>
+              <br>
+              <button class="btn btn-info btn-sm btn-block">Register(Not Available)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

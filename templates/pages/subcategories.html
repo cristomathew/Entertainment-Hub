@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{% load static %}
+<!DOCTYPE html>
+{%block title%}SubCategories{%endblock%}
+{%block content%} 
+        <section id="bc" class="mt-3">
+          <div class="container">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'index'%}" style="color: black;">
+                    <i class="fa fa-home"></i> index</a>
+                </li>
+                <li class="breadcrumb-item active"> {{category}}</li>
+              </ol>
+            </nav>
+          </div>
+        </section>
+        <div class="container">
+            <div class="row">
+              {% if categories %}
+              <!-- Listing 1 -->
+              <hr>
+              {%for category in categories%}
+              <div class="content col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="front" style="background: url('{{category.image.url}}') center; background-size: cover; ">
+                        <p>{{category.title}}</p>
+                    </div>
+                    <div class="back">
+                        <div>
+                            <p>{{category.description}}</p>
+                              <a href="{% url 'seasons' category.id%}"><button class="button">View</button></a>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            {%endfor%}
+            {%else%}
+            <h2> Currently There are no Series for this Category</h2>
+            {%endif%}
+              <!-- Listing 3 -->
+      </div>
+{%endblock%}

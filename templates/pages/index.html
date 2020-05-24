@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+{% load static %}
+<!DOCTYPE html>
+{%block title%}Categories{%endblock%}
+{%block content%} 
+        <div class="container">
+
+          {%if user.is_authenticated%}
+          <p style="color: green;">Welcome {{user.username}}</p>
+          {%else%}
+          <p style="color: red;">Please not you have to login before actually viewing the content <a href="{%url 'login'%}"><button class="btn btn-danger">login</button></a></p>
+          {%endif%}
+        </div>
+
+        <hr>
+        <div class="container">
+            <div class="row">
+              {% if categories %}
+              <!-- Listing 1 -->
+              <hr>
+              {%for category in categories%}
+              <div class="content col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="front" style="background: url('{{category.image.url}}') center; background-size: cover; ">
+                        <p>{{category.title}}</p>
+                    </div>
+                    <div class="back">
+                        <div>
+                            <p>{{category.description}}</p>
+                            <a href="{%url 'subcategories' category.id%}"><button class="button">View</button></a>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            {%endfor%}
+            {%else%}
+            <h2> Currently There are no Categories</h2>
+            {%endif%}
+              <!-- Listing 3 -->
+      </div>
+{%endblock%}
